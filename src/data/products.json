@@ -1,0 +1,170 @@
+{
+  "1": {
+    "1": {
+      "name": "Iphone 11",
+      "tags": ["1", "4"],
+      "img": "iphone11.png",
+      "discount": 15,
+      "price": 25516,
+      "stock": 3
+    },
+    "2": {
+      "name": "Iphone 11 Pro",
+      "tags": ["2", "5"],
+      "img": "iphone11-pro.png",
+      "discount": 0,
+      "price": 32293,
+      "stock": 3
+    },
+    "3": {
+      "name": "Iphone 11 Pro Max",
+      "tags": ["2", "6"],
+      "img": "iphone11-pro-max.png",
+      "discount": 0,
+      "price": 43590,
+      "stock": 3
+    },
+    "4": {
+      "name": "Iphone 12",
+      "tags": ["2", "7"],
+      "img": "iphone12.png",
+      "discount": 0,
+      "price": 30400,
+      "stock": 3
+    },
+    "5": {
+      "name": "Iphone 12 Pro",
+      "tags": ["3", "8"],
+      "img": "iphone12-pro.png",
+      "discount": 0,
+      "price": 40350,
+      "stock": 3
+    },
+    "6": {
+      "name": "Iphone 12 Pro Max",
+      "tags": ["3", "5"],
+      "img": "iphone12-pro-max.png",
+      "discount": 0,
+      "price": 49411,
+      "stock": 3
+    },
+    "7": {
+      "name": "Iphone 13",
+      "tags": ["8", "3"],
+      "img": "iphone13.png",
+      "discount": 0,
+      "price": 48900,
+      "stock": 3
+    },
+    "8": {
+      "name": "Iphone 13 Pro",
+      "tags": ["8", "2"],
+      "img": "iphone13-pro.png",
+      "discount": 0,
+      "price": 55495,
+      "stock": 3
+    },
+    "9": {
+      "name": "Iphone 13 Pro Max",
+      "tags": ["9", "3"],
+      "img": "iphone13-pro-max.png",
+      "discount": 0,
+      "price": 67495,
+      "stock": 3
+    },
+    "10": {
+      "name": "Iphone 14",
+      "tags": ["8", "2"],
+      "img": "iphone14.png",
+      "discount": 0,
+      "price": 60500,
+      "stock": 3
+    },
+    "11": {
+      "name": "Iphone 14 Pro",
+      "tags": ["7", "3"],
+      "img": "iphone14-pro.png",
+      "discount": 0,
+      "price": 73400,
+      "stock": 3
+    }
+  },
+  "2": {
+    "1": {
+      "name": "Macbook",
+      "tags": ["1", "4"],
+      "img": "macbook.png",
+      "discount": 10,
+      "price": 89899,
+      "stock": 3
+    },
+    "2": {
+      "name": "Macbook Air",
+      "tags": ["3", "6"],
+      "img": "macbook-air.png",
+      "discount": 10,
+      "price": 114000,
+      "stock": 3
+    },
+    "3": {
+      "name": "Macbook Pro",
+      "tags": ["2", "5"],
+      "img": "macbook-pro.png",
+      "discount": 0,
+      "price": 128033,
+      "stock": 3
+    }
+  },
+  "3": {
+    "1": {
+      "name": "Earpods",
+      "tags": [],
+      "img": "earpods.png",
+      "discount": 0,
+      "price": 2099,
+      "stock": 3
+    },
+    "2": {
+      "name": "Airpods",
+      "tags": [],
+      "img": "airpods-2.png",
+      "discount": 0,
+      "price": 12999,
+      "stock": 3
+    },
+    "3": {
+      "name": "Airpods Pro",
+      "tags": [],
+      "img": "airpods-pro.png",
+      "discount": 0,
+      "price": 24999,
+      "stock": 3
+    }
+  },
+  "4": {
+    "1": {
+      "name": "iPad",
+      "tags": ["1", "3"],
+      "img": "ipad.png",
+      "discount": 0,
+      "price": 44912,
+      "stock": 3
+    },
+    "2": {
+      "name": "iPad Air",
+      "tags": ["1", "4"],
+      "img": "ipad-air.png",
+      "discount": 0,
+      "price": 59999,
+      "stock": 3
+    },
+    "3": {
+      "name": "iPad Pro",
+      "tags": ["2", "5"],
+      "img": "ipad-pro.png",
+      "discount": 0,
+      "price": 79900,
+      "stock": 3
+    }
+  }
+}
