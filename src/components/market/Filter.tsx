@@ -36,9 +36,8 @@ const Option = ({ option, nodeRef }: OptionProps) => {
         type="checkbox"
         className="checkbox"
         id={option}
-        onClick={action}
+        onChange={action}
         checked={params.includes(option) ? true : false}
-        readOnly
       />
       <label htmlFor={option} className="filter-label">
         {t(`tags.${option}`)}
