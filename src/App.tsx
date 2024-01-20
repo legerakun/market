@@ -31,6 +31,16 @@ export const App = () => {
   useEffect(() => {
     if (state.params === undefined) return;
 
+    if (searchParams.toString() === state.params.toString()) return;
+
+    state.params = new URLSearchParams(searchParams);
+
+    setSearchParams(state.params);
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (state.params === undefined) return;
+
     setSearchParams(state.params);
   }, [state.params]);
 
