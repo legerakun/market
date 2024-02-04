@@ -1,11 +1,7 @@
 import { useContext } from "react";
 import { StateContext } from "@/libs/reducer";
 
-interface CartCloseProps {
-  img: string;
-}
-
-export const CartClose = ({ img }: CartCloseProps) => {
+export const CartClose = ({ img }: { img: string }) => {
   const { dispatch } = useContext(StateContext);
 
   return (

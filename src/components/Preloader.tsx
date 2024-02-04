@@ -1,28 +1,31 @@
-import { useState, useEffect, useRef } from "react";
-import { CSSTransition } from "react-transition-group";
+import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import landing from "@/assets/landing.svg";
 
 export const Preloader = () => {
   const [loaded, setLoaded] = useState(true);
-  const preloaderRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => {
       setLoaded(false);
-    }, 500);
+    }, 800);
   }, []);
 
   return (
-    <CSSTransition
-      nodeRef={preloaderRef}
-      in={loaded}
-      timeout={500}
-      classNames="preloader"
-      unmountOnExit
-    >
-      <div className="preloader" ref={preloaderRef}>
-        <img src={landing} alt="landing" className="preloader-img" />
-      </div>
-    </CSSTransition>
+    <AnimatePresence>
+      {loaded &&
+        <motion.div 
+          initial={true}
+          animate={{
+            opacity: 0,
+            transition: { ease: "easeInOut", duration: 0.8 },
+          }}
+          className="preloader"
+          key="preloader"
+        >
+          <img src={landing} alt="landing" className="preloader-img" />
+        </motion.div>
+      }
+    </AnimatePresence>
   );
 };

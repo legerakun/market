@@ -1,4 +1,4 @@
-import { MutableRefObject, useContext } from "react";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { CartItem } from "@/components/cart/CartItem";
 import { CartClose } from "@/components/cart/CartClose";
@@ -24,11 +24,7 @@ const Payment = () => {
   );
 };
 
-interface CartPanelProps {
-  nodeRef: MutableRefObject<null>;
-}
-
-export const CartPanel = ({ nodeRef }: CartPanelProps) => {
+export const CartPanel = () => {
   const { state } = useContext(StateContext);
 
   if (state.cart === undefined) return;
@@ -50,7 +46,7 @@ export const CartPanel = ({ nodeRef }: CartPanelProps) => {
   });
 
   return (
-    <div className="cart-container" ref={nodeRef}>
+    <>
       <div className="cart-header">
         <div>{t("cart")}</div>
         <CartClose img={close} />
@@ -64,6 +60,6 @@ export const CartPanel = ({ nodeRef }: CartPanelProps) => {
         />
       </div>
       <Payment />
-    </div>
+    </>
   );
 };

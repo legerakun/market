@@ -1,5 +1,4 @@
-import { useContext, useRef } from "react";
-import { Transition } from "react-transition-group";
+import { useContext } from "react";
 import { StateContext } from "@/libs/reducer";
 import { MarketItem } from "@/components/market/MarketItem";
 import { Filter } from "@/components/market/Filter";
@@ -7,7 +6,6 @@ import { Categories, Products, Tags } from "@/libs/types";
 import categoriesData from "@/data/categories.json";
 import productsData from "@/data/products.json";
 import tagsData from "@/data/tags.json";
-import landing from "@/assets/logo.svg";
 
 const categories: Categories = categoriesData;
 const products: Products = productsData;
@@ -25,10 +23,10 @@ export const Market = () => {
       const [itemId, itemData] = item;
 
       const category = categories[productCategory][0];
-      const hasCategory = state.params.get("category") === category;
+      const hasCategory: boolean = state.params.get("category") === category;
 
-      const goodTags = () => {
-        if (state.params === undefined) return;
+      const goodTags = (): boolean => {
+        if (state.params === undefined) return false;
 
         if (state.params.get("filters") === null) {
           return true;
@@ -47,8 +45,8 @@ export const Market = () => {
         }
       };
 
-      const goodSearch = () => {
-        if (state.params === undefined) return;
+      const goodSearch = (): boolean => {
+        if (state.params === undefined) return false;
 
         if (state.params.has("search")) {
           const name = itemData.name.toLowerCase();
@@ -61,31 +59,18 @@ export const Market = () => {
       const min = state.params.get("pricemin");
       const max = state.params.get("pricemax");
 
-      const goodPrice =
+      const goodPrice: boolean =
         (min === null ? true : itemData.price >= Number(min)) &&
         (max === null ? true : itemData.price <= Number(max));
 
-      const marketRef = useRef(null);
-
       acc.push(
-        <Transition
-          nodeRef={marketRef}
-          in={hasCategory && goodPrice && goodTags() && goodSearch()}
-          timeout={300}
+        <MarketItem
+          product={itemData}
+          category={productCategory}
+          id={Number(itemId)}
+          show={hasCategory && goodPrice && goodTags() && goodSearch()}
           key={itemData.name}
-          mountOnEnter
-          unmountOnExit
-        >
-          {(state) => (
-            <MarketItem
-              product={itemData}
-              category={productCategory}
-              id={Number(itemId)}
-              stage={state}
-              nodeRef={marketRef}
-            />
-          )}
-        </Transition>
+        />
       );
     });
 
@@ -95,10 +80,7 @@ export const Market = () => {
   return (
     <>
       <Filter />
-      <div className="market">
-        <img src={landing} alt="market" className="landing" />
-        {sortedProducts}
-      </div>
+      <div className="market">{sortedProducts}</div>
     </>
   );
 };

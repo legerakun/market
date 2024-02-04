@@ -1,6 +1,6 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
-import { CSSTransition } from "react-transition-group";
+import { AnimatePresence, motion } from "framer-motion";
 import { StateContext } from "@/libs/reducer";
 import { debounce } from "@/libs/utils";
 import logo from "@/assets/logo.svg";
@@ -11,7 +11,12 @@ const Search = () => {
   if (state.params === undefined) return;
 
   const { t } = useTranslation();
-  const searchRef = useRef(null);
+  const show = state.params.has("category");
+  const transition = { ease: "easeInOut", duration: 0.3 };
+  const initial = {
+    width: "0",
+    padding: "0"
+  };
 
   const searchValue = state.params.has("search")
     ? state.params.get("search")
@@ -37,23 +42,29 @@ const Search = () => {
   }, 500);
 
   return (
-    <CSSTransition
-      nodeRef={searchRef}
-      in={state.params.has("category")}
-      timeout={300}
-      classNames="search"
-      mountOnEnter
-    >
-      <input
-        ref={searchRef}
-        id="search"
-        type="search"
-        className="search"
-        defaultValue={searchValue!}
-        placeholder={t("search")}
-        onChange={(e) => onChange(e.target.value.toLowerCase())}
-      />
-    </CSSTransition>
+    <AnimatePresence>
+      {show &&
+        <motion.input
+          initial={initial}
+          animate={{
+            width: "calc(100% - 30px)",
+            padding: "10px",
+            transition: transition
+          }}
+          exit={{
+            ...initial,
+            transition: transition
+          }}
+          id="search"
+          type="search"
+          className="search"
+          defaultValue={searchValue!}
+          placeholder={t("search")}
+          onChange={(e) => onChange(e.target.value.toLowerCase())}
+          key="search"
+        />
+      }
+    </AnimatePresence>
   );
 };
 

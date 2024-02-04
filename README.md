@@ -6,7 +6,7 @@
 
 This is a sample website of online market.
 
-Built using React, TypeScript, i18next, react-router-dom, react-transition-group, [vite](https://vitejs.dev/),  Github Actions and [Github Pages](https://pages.github.com/).
+Built using React, TypeScript, i18next, react-router-dom, framer-motion, [vite](https://vitejs.dev/),  Github Actions and [Github Pages](https://pages.github.com/).
 
 ## Installation
 

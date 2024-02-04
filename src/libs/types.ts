@@ -2,7 +2,6 @@ export type Products = Record<string, Record<string, Product>>;
 export type Categories = Record<string, string[]>;
 export type Tags = Record<string, Record<string, string>>;
 export type Cart = Record<string, number>;
-export type Styles = Record<string, Record<string, number | string>>;
 
 export interface ContextProps {
   state: State;

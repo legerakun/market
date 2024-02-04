@@ -1,4 +1,5 @@
-import { useContext, MutableRefObject } from "react";
+import { useContext } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { StateContext } from "@/libs/reducer";
 import { Products } from "@/libs/types";
@@ -47,19 +48,27 @@ const Input = ({ min, max, type, defaultValue }: InputProps) => {
   );
 };
 
-interface FilterPrice {
+interface FilterPriceProps {
   category: string;
-  nodeRef: MutableRefObject<null>;
+  show: boolean;
 }
 
-export const FilterPrice = ({ category, nodeRef }: FilterPrice) => {
+export const FilterPrice = (props: FilterPriceProps) => {
   const { state } = useContext(StateContext);
 
   if (state.params === undefined) return;
 
   const { t } = useTranslation();
+  const transition = { ease: "easeInOut", duration: 0.5 };
+  const initial = { height: "0", fontSize: "0" };
+  const fontSize = window.innerWidth > 500 
+    ? "1.2rem" 
+    : "1rem";
+  const minHeight = window.innerWidth > 500 
+    ? "80px" 
+    : "60px";
 
-  const prices = Object.values(products[category]).map((product) => {
+  const prices = Object.values(products[props.category]).map((product) => {
     return product.discount === 0
       ? product.price
       : product.price * ((100 - product.discount) / 100);
@@ -77,28 +86,44 @@ export const FilterPrice = ({ category, nodeRef }: FilterPrice) => {
     : max;
 
   return (
-    <section className="filter-price" ref={nodeRef}>
-      <span className="filter-label-2">{t("price")}</span>
-      <section className="filter-section">
-        <label className="filter-label-2" htmlFor="price-min">
-          {"$" + (min / 100).toFixed(2)}
-        </label>
-        <label className="filter-label-2" htmlFor="price-max">
-          {"$" + (max / 100).toFixed(2)}
-        </label>
-      </section>
-      <Input
-        type="min"
-        min={min}
-        max={(max - min) * 0.5 + min}
-        defaultValue={Number(defaultMin)}
-      />
-      <Input
-        type="max"
-        min={(max - min) * 0.5 + min}
-        max={max}
-        defaultValue={Number(defaultMax)}
-      />
-    </section>
+    <AnimatePresence>
+      {props.show &&
+        <motion.section
+          initial={initial}
+          animate={{
+            height: minHeight,
+            fontSize: fontSize,
+            transition: transition
+          }} 
+          exit={{
+            ...initial,
+            transition: transition
+          }}
+          className="filter-price"
+        >
+          <span className="filter-label-2">{t("price")}</span>
+          <section className="filter-section">
+            <label className="filter-label-2" htmlFor="price-min">
+              {"$" + (min / 100).toFixed(2)}
+            </label>
+            <label className="filter-label-2" htmlFor="price-max">
+              {"$" + (max / 100).toFixed(2)}
+            </label>
+          </section>
+          <Input
+            type="min"
+            min={min}
+            max={(max - min) * 0.5 + min}
+            defaultValue={Number(defaultMin)}
+          />
+          <Input
+            type="max"
+            min={(max - min) * 0.5 + min}
+            max={max}
+            defaultValue={Number(defaultMax)}
+          />
+        </motion.section>
+      }
+    </AnimatePresence>
   );
 };
