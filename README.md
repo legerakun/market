@@ -1,6 +1,6 @@
-# React Market Website
+# Market
 
-![landing](https://raw.githubusercontent.com/legerakun/react-market/main/readme.png)
+![landing](https://raw.githubusercontent.com/legerakun/market/master/readme.png)
 
 ## Info
 
@@ -10,29 +10,27 @@ Built using React, TypeScript, i18next, react-router-dom, framer-motion, [vite](
 
 ## Installation
 
-To run this project locally, you need a [vite](https://vitejs.dev/).
-
-When the *vite* is installed, follow these steps:
+To run this project locally, you need to follow these steps.
 
 1. Clone the repository using the following command:
 
 ```
-git clone https://github.com/legerakun/react-market
+git clone https://github.com/legerakun/market
 ```
 
-2. Navigate to the project directory
+2. Navigate to the project directory:
 
 ```
-cd react-market
+cd market
 ```
 
-3. Setup *vite*:
+3. Setup dependencies:
 
 ```
 npm install
 ```
 
-4. Start local *vite* server:
+4. Start local server:
 
 ```
 npm run dev
