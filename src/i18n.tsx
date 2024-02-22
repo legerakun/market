@@ -12,6 +12,6 @@ export default i18n
     lng: "en",
     debug: false,
     backend: {
-      loadPath: "/react-market/locales/{{lng}}/{{ns}}.json",
+      loadPath: "/market/locales/{{lng}}/{{ns}}.json",
     }
   });
